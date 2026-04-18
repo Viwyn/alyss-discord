@@ -16,7 +16,10 @@ async def main() -> None:
     async def on_ready() -> None:
         print(f"Logged in as {bot.user} ({bot.user.id})")
 
-    await bot.load_extension("cogs.announcements")
+    for file in os.listdir("cogs"):
+        if file.endswith(".py") and not file.startswith("__"):
+            await bot.load_extension(f"cogs.{file[:-3]}")
+            print(f"loaded extension: {file[:-3]}")
 
     token = os.getenv("DISCORD_TOKEN")
     if not token:

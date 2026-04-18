@@ -124,7 +124,7 @@ class Announcements(commands.Cog):
         cleaned = sorted({d for d in days if 0 <= d <= 6})
         if cleaned == list(range(7)):
             return "Every day"
-        return ",".join(WEEKDAY_NAMES[d] for d in cleaned)
+        return ", ".join(WEEKDAY_NAMES[d] for d in cleaned)
 
     def _guild_record(self, guild_id: int) -> dict[str, Any]:
         guilds = self.data.setdefault("guilds", {})
