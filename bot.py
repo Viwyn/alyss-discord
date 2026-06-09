@@ -14,6 +14,12 @@ async def main() -> None:
 
     @bot.event
     async def on_ready() -> None:
+        # ← instant update during development
+        TEST_GUILD = discord.Object(id=629539703271456779)
+        bot.tree.copy_global_to(guild=TEST_GUILD)
+        await bot.tree.sync(guild=TEST_GUILD)
+        print("Slash commands synced.")
+        
         print(f"Logged in as {bot.user} ({bot.user.id})")
 
     for file in os.listdir("cogs"):
