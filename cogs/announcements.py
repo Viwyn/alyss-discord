@@ -181,7 +181,7 @@ class Announcements(commands.Cog):
                 if announcement.get("last_sent") == current_date:
                     continue
                 try:
-                    await channel.send(announcement.get("message", "Announcement"), delete_after=600)
+                    await channel.send(announcement.get("message", "Announcement"), delete_after=7800)
                     announcement["last_sent"] = current_date
                     changed = True
                 except discord.DiscordException:
